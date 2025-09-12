@@ -9,35 +9,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class ProductController {
-private static final Logger logger = LogManager.getLogger("FileProcessorThread");
-    
-    private static final String INPUT_DIR = "input";
+	private static final Logger logger = LogManager.getLogger(ProductController.class);
+	
+	private static final String INPUT_DIR = "input";
     private static final String PROCESSED_DIR = "processed";
     private static final String ERROR_DIR = "error";
-
-    @Override
-    public void run() {
-        try {
-            Files.createDirectories(Paths.get(PROCESSED_DIR));
-            Files.createDirectories(Paths.get(ERROR_DIR));
-
-
-            File inputFolder = new File(INPUT_DIR);
-            File[] files = inputFolder.listFiles((dir, name) -> name.endsWith(".csv"));
-
-            if (files == null || files.length == 0) {
-                logger.info("No files found in input folder.");
-                return;
-            }
-
-            for (File file : files) {
-                processFile(file);
-            }
-
-        } catch (Exception e) {
-            logger.error("Error in thread: " + e.getMessage());
-        }
-    }
 
     private void processFile(File file) {
         logger.info("Processing file: " + file.getName());

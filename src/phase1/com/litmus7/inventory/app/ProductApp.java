@@ -1,5 +1,9 @@
 package phase1.com.litmus7.inventory.app;
 
+
+
 public class ProductApp {
-  //hello
+	public static void main(String[] args) {
+        
+    }
 }

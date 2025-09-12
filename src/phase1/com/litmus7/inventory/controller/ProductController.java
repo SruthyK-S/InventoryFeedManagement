@@ -102,3 +102,4 @@ private static final Logger logger = LogManager.getLogger("FileProcessorThread")
             logger.error("Failed to move file " + file.getName() + ": " + e.getMessage());
         }
     }
+}

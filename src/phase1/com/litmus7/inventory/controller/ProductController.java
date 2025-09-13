@@ -18,7 +18,7 @@ public class ProductController {
     private static final String PROCESSED_DIR = "processed";
     private static final String ERROR_DIR = "error";
     
-    private FileProcessorManager fileProcessor = new FileProcessorManager(INPUT_DIR);
+    private FileProcessorManager fileProcessor = new FileProcessorManager(INPUT_DIR, PROCESSED_DIR, ERROR_DIR);
     
     public int addToInventory()
     {

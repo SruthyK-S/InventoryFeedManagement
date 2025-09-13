@@ -1,18 +1,12 @@
 package phase1.com.litmus7.inventory.thread;
 
-import java.io.BufferedReader;
+
+
 import java.io.File;
-import java.io.FileReader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import phase1.com.litmus7.inventory.util.DBConnectionUtil;
 import phase1.com.litmus7.inventory.util.FileUtil;
 
 public class FileProcessorManager extends Thread{

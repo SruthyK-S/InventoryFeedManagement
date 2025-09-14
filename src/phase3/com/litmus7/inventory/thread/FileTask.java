@@ -13,35 +13,26 @@ public class FileTask implements Runnable {
 
 
     private File file;
-    private String processed;
-    private String error;
+    private String processed_dir;
+    private String error_dir;
 
     public FileTask(File file, String processed, String error) {
         this.file = file;
-        this.processed = processed;
-        this.error = error;
+        this.processed_dir = processed;
+        this.error_dir = error;
     }
 
     @Override
     public void run() {
-        logger.info("Processing file in thread {} → {}", Thread.currentThread().getName(), file.getName());
-
+        logger.info("Processing file: " + file.getName());
         boolean success = false;
         ProductDAO productDao = new ProductDAO();
-
-        try
-        {
-        	success = productDao.insertDataToDB(file);
-        }
-         catch (Exception ex) {
-        	 success = false;
-            logger.error("Error while processing file " + file.getName() + ": " + ex.getMessage());
-        }
+        success = productDao.insertDataToDB(file);
 
         if (success) {
-            FileUtil.moveFile(file, processed);
+            FileUtil.moveFile(file, processed_dir);
         } else {
-            FileUtil.moveFile(file, error);
+            FileUtil.moveFile(file, error_dir);
         }
     }
 

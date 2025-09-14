@@ -1,4 +1,4 @@
-package phase2.com.litmus7.inventory.thread;
+package phase3.com.litmus7.inventory.thread;
 
 import java.io.File;
 import java.nio.file.Files;

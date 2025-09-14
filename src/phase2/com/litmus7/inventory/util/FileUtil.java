@@ -1,4 +1,4 @@
-package phase1.com.litmus7.inventory.util;
+package phase2.com.litmus7.inventory.util;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,31 +10,12 @@ import java.nio.file.StandardCopyOption;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import phase2.com.litmus7.inventory.dao.ProductDAO;
 
 public class FileUtil {
 	String processed;
     String error;
 
 	private static final Logger logger = LogManager.getLogger(FileUtil.class);
-	
-
-	public static boolean processFile(File file) {
-        logger.info("Processing file: " + file.getName());
-        ProductDAO productDao = new ProductDAO();
-        
-        boolean success; 
-        try
-        {
-        	success = productDao.insertDataToDB(file);
-        }
-         catch (Exception ex) {
-        	 success = false;
-            logger.error("DB connection error for file " + file.getName() + ": " + ex.getMessage());
-        }
-
-        return success;
-    }
 	
 	public static void moveFile(File file, String targetDir) {
         try {

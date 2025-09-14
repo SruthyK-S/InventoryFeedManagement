@@ -11,7 +11,6 @@ import phase1.com.litmus7.inventory.util.FileUtil;
 
 public class FileProcessorManager extends Thread{
 	private static final Logger logger = LogManager.getLogger("FileProcessorThread");
-	private FileUtil fileUtil;
 	String input;
 	String processed;
 	String error;
@@ -22,7 +21,6 @@ public class FileProcessorManager extends Thread{
 		this.input = input;
 		this.processed = processed;
 		this.error = error;
-		this.fileUtil = new FileUtil(processed, error);
 	}
     
     @Override
@@ -38,7 +36,12 @@ public class FileProcessorManager extends Thread{
 	            }
 	
 	            for (File file : files) {
-	                fileUtil.processFile(file);
+	                boolean success = FileUtil.processFile(file);
+	                if (success) {
+	                    FileUtil.moveFile(file, processed);
+	                } else {
+	                    FileUtil.moveFile(file, error);
+	                }
             }
 
         } catch (Exception e) {
